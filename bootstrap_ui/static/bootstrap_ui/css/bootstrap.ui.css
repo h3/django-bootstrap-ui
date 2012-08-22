@@ -1,0 +1,15 @@
+legend {
+    border: 0;
+    padding-bottom: 10px;
+}
+
+.checkbox {
+    margin-top: 22px;
+}
+
+fieldset {
+    background: #f4f4f4;
+    padding: 0;
+    border: 20px solid #f4f4f4;
+    margin-left: -20px;
+}
