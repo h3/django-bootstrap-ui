@@ -3,13 +3,59 @@ legend {
     padding-bottom: 10px;
 }
 
-.checkbox {
+
+fieldset {
+    background: #eee;
+    border: 1px solid #ddd;
+    padding: 0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+fieldset legend {
+    background: #333333;
+    border: 0 none;
+    border-radius: 5px 5px 0 0;
+    color: #eee;
+    display: block;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1em;
+    margin: 0 0 9px;
+    padding: 8px 0 8px 10px;
+    width: 100%;
+}
+
+fieldset .control-group {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+fieldset .control-group label {
+}
+
+fieldset .controls {
+}
+
+fieldset .controls label {
+}
+
+fieldset .controls .checkbox {
     margin-top: 22px;
 }
 
-fieldset {
-    background: #f4f4f4;
-    padding: 0;
-    border: 20px solid #f4f4f4;
-    margin-left: -20px;
+/* Forms adjustments */
+
+form .span8 select,
+form .span8 input[type="text"] {
+    width: 610px;
+}
+
+form .span9 select,
+form .span9 input[type="text"] {
+    width: 650px;
+}
+
+form .span12 select,
+form .span12 input[type="text"] {
+    width: 890px;
 }
