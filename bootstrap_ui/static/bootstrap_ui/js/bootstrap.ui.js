@@ -1,7 +1,9 @@
 (function($){
 
     $(function () {
-        
+
+        // --- Tooltips
+        $('[rel="tooltip"]').tooltip()
 
         // --- Slider
 
