@@ -23,7 +23,65 @@
         }))
     }
 
+    $.widgets = {
+        __ns: {},
+        __parseOptions: function(el){
+            var data = el.data(), opts = {}, opt
 
+            $.each(data, function(k, v){
+                if (k.slice(0,3) == 'opt') {
+                    opts[k.slice(3, 4).toLowerCase() + k.slice(4)] = v
+                }
+            })
+            return opts
+        },
+        __load_widget: function(el){
+            var el = $(el),
+                initialized = el.data('initialized')
+
+            if (initialized) return true
+            else {
+                console.log($.widgets.__ns)
+                console.log(el.data('type'))
+                if ($.isFunction($.widgets.__ns[el.data('type')])) {
+                    var options = [$('#'+ el.data('field-id')), $.widgets.__parseOptions(el)]
+                    $.widgets.__ns[el.data('type')].apply(document, options)
+                    el.data('initialized', true)
+                }
+            }
+        },
+
+        load: function(el) {
+            var el = el || 'widget'
+            $(el).each(function(k, v){
+                $.widgets.__load_widget(v)
+            });
+        },
+
+        register: function(ns, callback) {
+            $.widgets.__ns[ns] = callback
+        }
+    };
+
+    $.widgets.register('datetime', function(el, options) {
+        var wrapper = $(el),
+            options = options || {},
+              input = false
+
+
+        if (wrapper.hasClass('inline')) {
+            input = wrapper
+            wrapper = $('<div>').attr('id', input.attr('id') +'-wrapper').insertAfter(input)
+        }
+
+        wrapper.datetimepicker($.extend(options, {
+            inline: wrapper.hasClass('inline'),
+            onSelect: function(selectedDate) {
+                if (input) input.val(selectedDate)
+                else wrapper.val(selectedDate)
+            }
+        }))
+    })
 
     $(function () {
 
