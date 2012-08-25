@@ -75,3 +75,17 @@ form .span12 select,
 form .span12 input[type="text"] {
     width: 890px;
 }
+
+
+/* TO FIX */
+
+.btn-small {
+    font-size: 12px;
+    line-height: 18px;
+    padding: 3px 9px;
+}
+.btn-mini {
+    font-size: 11px;
+    line-height: 16px;
+    padding: 2px 6px;
+}
