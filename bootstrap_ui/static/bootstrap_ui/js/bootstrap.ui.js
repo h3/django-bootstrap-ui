@@ -1,5 +1,30 @@
 (function($){
 
+    $.boostrapui = {};
+    $.boostrapui.initialize = {};
+
+    // DATETIME
+
+    $.boostrapui.datetimepicker = function(el) {
+        var wrapper = $(el),
+              input = false
+
+        if (wrapper.hasClass('inline')) {
+            input = wrapper
+            wrapper = $('<div>').attr('id', input.attr('id') +'-wrapper').insertAfter(input)
+        }
+
+        wrapper.datetimepicker($.extend(wrapper.data(), {
+            inline: wrapper.hasClass('inline'),
+            onSelect: function(selectedDate) {
+                if (input) input.val(selectedDate)
+                else wrapper.val(selectedDate)
+            }
+        }))
+    }
+
+
+
     $(function () {
         
 
@@ -96,23 +121,8 @@
         // --- Datetime picker
 
         $('input.widget-datetime-picker').each(function(){
-            var wrapper = $(this),
-                  input = false
-
-            if (wrapper.hasClass('inline')) {
-                input = wrapper
-                wrapper = $('<div>').attr('id', input.attr('id') +'-wrapper').insertAfter(input)
-            }
-
-            wrapper.datetimepicker($.extend(wrapper.data(), {
-                inline: wrapper.hasClass('inline'),
-                onSelect: function(selectedDate) {
-                    if (input) input.val(selectedDate)
-                    else wrapper.val(selectedDate)
-                }
-            }))
-
-        }) // Datetime / END
+            $.boostrapui.datetimepicker(this)
+        })
 
 
     });
