@@ -2,18 +2,6 @@
     display: none!important;
 }
 
-.navbar a.username {
-    color: #6BC3FF!important;
-}
-
-.navbar .brand {
-    color: black!important;
-    background: #D8A20D!important;
-    font-weight: bold;
-    font-size: 16px;
-    padding: 12px 20px;
-}
-
 fieldset {
     background: #eee;
     padding: 0;
@@ -105,11 +93,17 @@ form .span12 input[type="text"] {
     padding: 2px 6px;
 }
 
+.span3 input[type="password"],
 .span3 input[type="text"] {
     width: 170px;
 }
 
+.span4 input[type="password"],
+.span4 input[type="text"] {
+    width: 248px;
+}
+
+.span6 input[type="password"],
 .span6 input[type="text"] {
     width: 410px;
 }
-
