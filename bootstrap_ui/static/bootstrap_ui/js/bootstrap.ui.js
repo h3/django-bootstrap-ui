@@ -1,27 +1,6 @@
 (function($){
 
-    $.boostrapui = {};
-    $.boostrapui.initialize = {};
-
-    // DATETIME
-
-    $.boostrapui.datetimepicker = function(el) {
-        var wrapper = $(el),
-              input = false
-
-        if (wrapper.hasClass('inline')) {
-            input = wrapper
-            wrapper = $('<div>').attr('id', input.attr('id') +'-wrapper').insertAfter(input)
-        }
-
-        wrapper.datetimepicker($.extend(wrapper.data(), {
-            inline: wrapper.hasClass('inline'),
-            onSelect: function(selectedDate) {
-                if (input) input.val(selectedDate)
-                else wrapper.val(selectedDate)
-            }
-        }))
-    }
+    var $id = function(i){ return $('#'+i) }
 
     $.widgets = {
         __ns: {},
@@ -41,10 +20,8 @@
 
             if (initialized) return true
             else {
-                console.log($.widgets.__ns)
-                console.log(el.data('type'))
                 if ($.isFunction($.widgets.__ns[el.data('type')])) {
-                    var options = [$('#'+ el.data('field-id')), $.widgets.__parseOptions(el)]
+                    var options = [$id(el.data('field-id')), $.widgets.__parseOptions(el), el]
                     $.widgets.__ns[el.data('type')].apply(document, options)
                     el.data('initialized', true)
                 }
@@ -63,128 +40,88 @@
         }
     };
 
-    $.widgets.register('datetime', function(el, options) {
-        var wrapper = $(el),
-            options = options || {},
-              input = false
+    // Slider
 
+    $.widgets.register('slider', function(el, options, widgets) {
+        var input = $(el),
+            wrapper_id = input.attr('id') +'-wrapper',
+            wrapper = $('<div>').attr('id', wrapper_id).insertAfter(el)
+
+        wrapper.slider($.extend(options, {
+            slide: function(e, ui) { input.val(ui.value) }
+        }))
+        input.val(wrapper.slider('value'))
+    }) // Slider / END
+
+
+    // Date picker
+
+    $.widgets.register('date', function(el, options, widgets) {
+        var wrapper = $(el),
+              input = false
 
         if (wrapper.hasClass('inline')) {
             input = wrapper
             wrapper = $('<div>').attr('id', input.attr('id') +'-wrapper').insertAfter(input)
         }
 
-        wrapper.datetimepicker($.extend(options, {
+        wrapper.datepicker($.extend(options), {
             inline: wrapper.hasClass('inline'),
             onSelect: function(selectedDate) {
                 if (input) input.val(selectedDate)
                 else wrapper.val(selectedDate)
             }
-        }))
-    })
-
-    $(function () {
-
-        // --- Tooltips
-        $('[rel="tooltip"]').tooltip()
-
-        // --- Slider
-
-        $('input.widget-slider').each(function(){
-            var input = $(this),
-                wrapper_id = input.attr('id') +'-wrapper',
-                wrapper = $('<div>').attr('id', wrapper_id).insertAfter(this)
-
-            wrapper.slider($.extend(wrapper.data(), {
-                slide: function(e, ui) { input.val(ui.value) }
-            }))
-
-            input.val(wrapper.slider('value'))
-        }); // Slider / END
-
-
-        // --- Date picker
-
-        $('input.widget-date-picker').each(function(){
-            var wrapper = $(this),
-                  input = false
-
-            if (wrapper.hasClass('inline')) {
-                input = wrapper
-                wrapper = $('<div>').attr('id', input.attr('id') +'-wrapper').insertAfter(input)
-            }
-
-            wrapper.datepicker($.extend(wrapper.data(), {
-                inline: wrapper.hasClass('inline'),
-                onSelect: function(selectedDate) {
-                    if (input) input.val(selectedDate)
-                    else wrapper.val(selectedDate)
-                }
-            }))
-
-        }) // Date / END
-
-
-        // --- Date range picker
-
-        $('.widget-date-range-picker').each(function(){
-            var inputs = $(this).find('.dateinput')
-
-            if ($(this).hasClass('inline')) {
-                inputs.addClass('inline')
-            }
-
-            if (inputs.first().hasClass('inline')) {
-                input_1 = inputs.first().hide()
-                opts_1 = input_1.data()
-                wrapper_1 = $('<div>').attr('id', input_1.attr('id') +'-wrapper').insertAfter(input_1)
-            }
-            else {
-                wrapper_1 = inputs.first()
-                opts_1 = wrapper_1.data()
-                input_1 = false
-            }
-
-            if (inputs.last().hasClass('inline')) {
-                input_2 = inputs.last().hide()
-                opts_1 = input_2.data()
-                wrapper_2 = $('<div>').attr('id', input_2.attr('id') +'-wrapper').insertAfter(input_2)
-            }
-            else {
-                wrapper_2 = inputs.last()
-                opts_1 = wrapper_2.data()
-                input_2 = false
-            }
-
-            wrapper_1.datepicker($.extend(opts_1, {
-                inline: wrapper_1.hasClass('inline'),
-                onSelect: function(selectedDate) {
-                    if (input_1) {
-                        input_1.val(selectedDate)
-                    }
-                    wrapper_2.datepicker("option", "minDate", selectedDate)
-                }
-            }))
-
-            wrapper_2.datepicker($.extend(wrapper_2.data(), {
-                inline: wrapper_2.hasClass('inline'),
-                onSelect: function(selectedDate) {
-                    if (input_2) {
-                        input_2.val(selectedDate)
-                    }
-                    wrapper_1.datepicker("option", "maxDate", selectedDate)
-                }
-            }))
-        }) // Date range picker / END
-
-
-        // --- Datetime picker
-
-        $('input.widget-datetime-picker').each(function(){
-            $.boostrapui.datetimepicker(this)
         })
 
+    }) // Date picker / END
 
+
+    // DateTime picker
+
+    $.widgets.register('datetime', function(el, options, widget) {
+        var wrapper = $(el),
+            options = options || {},
+           range_to = widget.data('range-to'),
+         range_from = widget.data('range-from'),
+             inline = widget.data('inline'),
+              input = false
+
+        if (inline) {
+            console.log('INLINE')
+            input = wrapper
+            wrapper = $('<div>').attr('id', input.attr('id') +'-wrapper').insertAfter(input)
+        }
+        options.constrainInput = false
+        // Date range 
+
+        if (range_to) {
+            options.onSelect = function(selectedDate) {
+				$id(range_to).datepicker('option', 'minDate', selectedDate);
+			}
+        }
+        else if (range_from) {
+            options.onSelect = function(selectedDate) {
+				$id(range_from).datepicker('option', 'maxDate', selectedDate);
+			}
+        }
+        else {
+            options.onSelect = function(selectedDate) {
+                if (input) input.val(selectedDate)
+                else wrapper.val(selectedDate)
+            }
+        }
+        // Date range / END
+
+        wrapper.datetimepicker(options)
+
+        // FIXME: HORRIBLE HACK!!
+        if (options.regional == 'fr') { (input || wrapper).datetimepicker('option', 'dateFormat', 'dd/mm/yy') }
+
+    }) // DateTime picker / END
+
+    // Main initialization
+    $(function () {
+        $('[rel="tooltip"]').tooltip()
+        $.widgets.load();
     });
 })(jQuery);
-

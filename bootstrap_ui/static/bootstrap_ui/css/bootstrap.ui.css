@@ -1,3 +1,7 @@
+.hide {
+    display: none!important;
+}
+
 .navbar a.username {
     color: #6BC3FF!important;
 }
@@ -76,6 +80,16 @@ form .span12 input[type="text"] {
     width: 890px;
 }
 
+.inplaceeditform ul.alert,
+.inplaceedit ul.alert {
+    display: inline-block;
+    margin-top: 0!important;
+    margin-left: 6px!important;
+    margin-bottom: 0!important;
+    list-style: none!important;
+    padding: 4px 35px 5px 14px!important;
+} 
+
 
 /* TO FIX */
 
@@ -83,6 +97,9 @@ form .span12 input[type="text"] {
     font-size: 12px;
     line-height: 18px;
     padding: 3px 9px;
+}
+.btn-small .icon {
+    margin-top: 1px!important;
 }
 .btn-mini {
     font-size: 11px;
