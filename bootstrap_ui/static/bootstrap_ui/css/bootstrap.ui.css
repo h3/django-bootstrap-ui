@@ -14,10 +14,8 @@
     padding: 12px 20px;
 }
 
-
 fieldset {
     background: #eee;
-    border: 1px solid #ddd;
     padding: 0;
     border-radius: 5px;
     margin-bottom: 20px;
@@ -106,3 +104,12 @@ form .span12 input[type="text"] {
     line-height: 16px;
     padding: 2px 6px;
 }
+
+.span3 input[type="text"] {
+    width: 170px;
+}
+
+.span6 input[type="text"] {
+    width: 410px;
+}
+

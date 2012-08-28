@@ -1,0 +1,127 @@
+{% load i18n %}
+{# frontadmin_tags bootstraped_tags  #}
+{% get_current_language as lang %}
+{% block doctype %}<!DOCTYPE html>{% endblock %}
+{# www.phpied.com/conditional-comments-block-downloads/ #}
+<!--[if IE]><![endif]-->
+<html lang="{{ lang|default:"en" }}" class="{% block html.class%}{% endblock %}" dir="{{LANGUAGE_BIDI|yesno:"rtl,ltr"}}"{% block html.extra %}{% endblock %}>
+  <head>
+    {% block site.head %}
+    {# Site title #}
+    {% block site.title %}<title>{% block app.title %}{% endblock %}{% block project.title %}{% endblock %}</title>{% endblock %}
+    {# Metas #}
+    {% block site.meta %}
+    <meta charset="utf-8">
+    {# Always force latest IE rendering engine (even in intranet) & Chrome Frame Remove this if you use the .htaccess #}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    {% block project.meta %}
+    <meta name="description" content="{% block project.description %}{% endblock %}">
+    <meta name="keywords" content="{% block project.keywords %}{% endblock %}">
+    {% endblock %}
+    {% block app.meta %}{% endblock %}
+    {% comment %}
+    Mobile Viewport Fix
+    device-width : Occupy full width of the screen in its current orientation
+    initial-scale = 1.0 retains dimensions instead of zooming out if page height > device height
+    maximum-scale = 1.0 retains dimensions instead of zooming in if page width < device width
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+    {% endcomment %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% endblock %}
+
+    {% block project.favicon %}
+    <link rel='shortcut icon' href="/favicon.ico" />
+    {% endblock%}
+
+    {% block site.headstyles %}
+    <!--[if IE]>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/css/custom-theme/jquery.ui.1.8.16.ie.css"/>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap_ui/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/third-party/jQuery-UI-Date-Time-Picker/jquery-ui-timepicker.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap_ui/css/bootstrap.ui.css">
+    {% block project.headstyles %}{% endblock%}
+    {% block app.headstyles %}{% endblock%}
+    {% endblock %}
+
+    {% block site.headscripts %}
+    {# HTML5 shim, for IE6-8 support of HTML5 elements #}
+    <!--[if lt IE 9]><script src="{{ STATIC_URL }}jquery-ui-bootstrap/bootstrap_ui/js/html5.js"></script><![endif]-->
+    <script type="text/javascript" src="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/js/jquery-ui-1.8.23.custom.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/js/bootstrap/bootstrap.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/js/bootstrap/bootstrap-tooltip.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/third-party/jQuery-UI-Date-Range-Picker/js/date.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/third-party/jQuery-UI-Date-Range-Picker/js/daterangepicker.jQuery.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/third-party/wijmo/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/third-party/wijmo/jquery.bgiframe-2.1.3-pre.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/third-party/wijmo/jquery.wijmo-open.1.5.0.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/third-party/jQuery-UI-FileInput/js/enhance.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/third-party/jQuery-UI-FileInput/js/fileinput.jquery.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/third-party/jQuery-UI-Date-Time-Picker/jquery-ui-timepicker-addon.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}bootstrap_ui/js/bootstrap.ui.js"></script>
+    {% block project.headscripts %}{% endblock %}
+    {% block app.headscripts %}{% endblock %}
+    {% endblock %}
+
+    {% endblock %}
+  </head>
+    {# paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ #}
+  <body{% block body.extra %}{% endblock %}>
+    {% block site.body %}
+    {% block project.head %}{% endblock %}
+    {% block project.body %}{% endblock %}
+    {% block project.footer %}{% endblock %}
+    {% endblock %}
+    {% block site.styles %}
+    {% block project.styles %}{% endblock%}
+    {% block app.styles %}{% endblock%}
+    {% endblock %}
+    {% block site.scripts %}
+    {# Javascript at the bottom for fast page loading #}
+    <script>!window.jQuery && document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"><\/script>');</script>
+    <script>
+    var django = (function($){
+        var _urls = {},
+            _conf = {};
+        return {
+            settings: {
+                'MEDIA_URL': '{{ MEDIA_URL }}',
+                'STATIC_URL': '{{ STATIC_URL }}'
+            },
+
+            i18n: function() {
+                var strs = {};
+                var get = function(k) { return _conf[k]; }
+                var set = function(k, v) { return _conf[k] = v; }
+                return arguments.length == 2
+                    && set(arguments[0], arguments[1])
+                    || get(arguments[0]);
+            },
+
+            urls: function() {
+                var get = function(k) { return _urls[k]; }
+                var set = function(k, v) { return _urls[k] = v; }
+                return arguments.length >= 2
+                    && set(arguments[0], arguments[1])
+                    || get(arguments[0]);
+            }
+        }
+    })(jQuery);
+
+    {# http://www.djangoproject.com/weblog/2011/feb/08/security/ #}
+    {# http://docs.djangoproject.com/en/dev/ref/contrib/csrf/#ajax #}
+    //$.ajaxSetup({
+    //    beforeSend: function(xhr, settings) {
+    //        if ($.cookie('csrftoken') && (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url)))) {
+    //            xhr.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));
+    //        }
+    //    }
+    //});
+    </script>
+    {% block project.scripts %}{% endblock%}
+    {% block app.scripts %}{% endblock%}
+    {% endblock%}
+  </body>
+</html>
