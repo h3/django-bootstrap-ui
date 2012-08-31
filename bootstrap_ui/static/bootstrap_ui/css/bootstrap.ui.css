@@ -132,7 +132,7 @@ form .span12 input[type="text"] {
     padding: 4px;
 }
 
-.inplaceedit:hover {
+.edit_over {
     background: #def;
 }
 
@@ -144,4 +144,22 @@ form .span12 input[type="text"] {
 .inplaceedit:hover i {
     margin-left: 8px;
     display: inline-block;
+}
+
+
+h1 .inplaceedit {
+    font-size: 1.2em;
+    background: #def;
+    display: inline;
+    padding: 0px 10px;
+}
+h1 .inplaceedit i {
+    margin-left: 10px;
+}
+
+h1 .inplaceediti i,
+h1 .inplaceedit.edit_over i {
+    margin-left: 10px;
+    position: relative;
+    top: 16px;
 }
