@@ -119,6 +119,51 @@
 
     }) // DateTime picker / END
 
+
+    // FK Autocomplete 
+
+    $.widgets.register('autocomplete', function(el, options, widget) {
+        if (options.source && options.source[0] == '#') {
+            if ($(options.source)[0].tagName == 'SELECT') {
+                var src = $(options.source).hide()
+                var placeholder = src.find('option[value="'+ src.val() +'"]').text()
+                el = $('<input type="text">').attr('placeholder', placeholder).insertAfter(src)
+                options.source = []
+                rs = src.find('option').each(function(){ 
+                    options.source.push({label: $(this).text(), value: $(this).val()});
+                }) 
+                options.focus = function(e, ui) {
+                    el.val(ui.item.label);
+                    return false;
+                }
+                options.select = function(e, ui) {
+                    console.log('select', e, ui)
+                    el.hide()
+                    src.show().val(ui.item.value);
+                    console.log(el, src, ui.item.value, src.parents("form.inplaceeditform"))
+                    src.parents("form.inplaceeditform").submit()
+                    //$( "#project-description" ).html( ui.item.desc );
+                    //$( "#project-icon" ).attr( "src", "images/" + ui.item.icon );
+                    return false;
+                }
+                src.data('getValue', function(){
+                    return 'testtt'
+                })
+            }
+        }
+        el.autocomplete($.extend(options, {
+            minLength: 0,
+        }))
+        el.data('autocomplete')._renderItem = function(ul, item){
+			return $('<li></li>')
+				.data( "item.autocomplete", item)
+				.append('<a>' + item.label + '</a>')
+				.appendTo(ul);
+        }
+
+    }) // FK Autocomplete / END
+
+
     // Main initialization
     $(function () {
         $('[rel="tooltip"]').tooltip()

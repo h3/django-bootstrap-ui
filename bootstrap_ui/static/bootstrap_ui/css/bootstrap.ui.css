@@ -149,9 +149,13 @@ form .span12 input[type="text"] {
 
 h1 .inplaceedit {
     font-size: 1.2em;
-    background: #def;
     display: inline;
+    background: transparent;
+    border: 0;
     padding: 0px 10px;
+}
+h1 .inplaceedit:hover {
+    background-color: #def;
 }
 h1 .inplaceedit i {
     margin-left: 10px;

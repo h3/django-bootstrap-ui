@@ -1,0 +1,16 @@
+{% extends  "inplaceeditform/render_field.html" %}
+{% load inplace_edit %}
+
+{# block classapply %}{{ block.super }} applyFkAutocomplete{% endblock #}
+{# block cancelapply %}{{ block.super }} applyFkAutocomplete{% endblock #}
+
+{% block actions %}
+{% endblock %}
+
+{% block widget.type %}autocomplete{% endblock %}
+{% block widget.options %}
+data-opt-source="#{{ field.auto_id }}" 
+{% for k, v in config.items %}
+{% if k|slice:"3" == "opt" %}data-{{ k|make_attribute }}="{{ v }}" {% endif %}
+{% endfor %}
+{% endblock %}
