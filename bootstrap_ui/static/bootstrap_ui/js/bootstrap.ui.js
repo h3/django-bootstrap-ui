@@ -87,7 +87,6 @@
               input = false
 
         if (inline) {
-            console.log('INLINE')
             input = wrapper
             wrapper = $('<div>').attr('id', input.attr('id') +'-wrapper').insertAfter(input)
         }
