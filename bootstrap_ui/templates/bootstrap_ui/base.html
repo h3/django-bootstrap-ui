@@ -1,9 +1,6 @@
 {% load i18n %}
-{# frontadmin_tags bootstraped_tags  #}
 {% get_current_language as lang %}
 {% block doctype %}<!DOCTYPE html>{% endblock %}
-{# www.phpied.com/conditional-comments-block-downloads/ #}
-<!--[if IE]><![endif]-->
 <html lang="{{ lang|default:"en" }}" class="{% block html.class%}{% endblock %}" dir="{{LANGUAGE_BIDI|yesno:"rtl,ltr"}}"{% block html.extra %}{% endblock %}>
   <head>
     {% block site.head %}
@@ -12,8 +9,6 @@
     {# Metas #}
     {% block site.meta %}
     <meta charset="utf-8">
-    {# Always force latest IE rendering engine (even in intranet) & Chrome Frame Remove this if you use the .htaccess #}
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     {% block project.meta %}
     <meta name="description" content="{% block project.description %}{% endblock %}">
     <meta name="keywords" content="{% block project.keywords %}{% endblock %}">
@@ -34,10 +29,6 @@
     {% endblock%}
 
     {% block site.headstyles %}
-    <!--[if IE]>
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/css/custom-theme/jquery.ui.1.8.16.ie.css"/>
-    <![endif]-->
-    {#<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap_ui/bootstrap/css/bootstrap.min.css">#}
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/css/style.css">
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/third-party/jQuery-UI-Date-Time-Picker/jquery-ui-timepicker.css">
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap_ui/css/bootstrap.ui.css">
@@ -46,13 +37,9 @@
     {% endblock %}
 
     {% block site.headscripts %}
-    {# HTML5 shim, for IE6-8 support of HTML5 elements #}
-    <!--[if lt IE 9]><script src="{{ STATIC_URL }}jquery-ui-bootstrap/bootstrap_ui/js/html5.js"></script><![endif]-->
     <script type="text/javascript" src="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/js/jquery-ui-1.8.23.custom.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}bootstrap_ui/bootstrap/js/bootstrap.min.js"></script>
-    {#<script type="text/javascript" src="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/js/bootstrap/bootstrap.js"></script>#}
-    {#<script type="text/javascript" src="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/js/bootstrap/bootstrap-tooltip.js"></script>#}
+    <script type="text/javascript" src="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/js/bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/third-party/jQuery-UI-Date-Range-Picker/js/date.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/third-party/jQuery-UI-Date-Range-Picker/js/daterangepicker.jQuery.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}bootstrap_ui/jquery-ui-bootstrap/third-party/wijmo/jquery.mousewheel.min.js"></script>
@@ -65,10 +52,8 @@
     {% block project.headscripts %}{% endblock %}
     {% block app.headscripts %}{% endblock %}
     {% endblock %}
-
     {% endblock %}
   </head>
-    {# paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ #}
   <body{% block body.extra %}{% endblock %}>
     {% block site.body %}
     {% block project.head %}{% endblock %}
@@ -110,16 +95,6 @@
             }
         }
     })(jQuery);
-
-    {# http://www.djangoproject.com/weblog/2011/feb/08/security/ #}
-    {# http://docs.djangoproject.com/en/dev/ref/contrib/csrf/#ajax #}
-    //$.ajaxSetup({
-    //    beforeSend: function(xhr, settings) {
-    //        if ($.cookie('csrftoken') && (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url)))) {
-    //            xhr.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));
-    //        }
-    //    }
-    //});
     </script>
     {% block project.scripts %}{% endblock%}
     {% block app.scripts %}{% endblock%}
