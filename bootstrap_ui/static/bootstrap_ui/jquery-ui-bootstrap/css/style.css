@@ -5920,7 +5920,7 @@ a.badge:hover {
 
 .ui-widget-content {
   color: #333333;
-  background: #ffffff url("../../img/ui-bg_glass_75_ffffff_1x400.png") 50% 50% repeat-x;
+  background: #ffffff url("../img/ui-bg_glass_75_ffffff_1x400.png") 50% 50% repeat-x;
   border: 1px solid #999999;
 }
 
@@ -6192,37 +6192,37 @@ select:focus {
 .ui-icon {
   width: 16px;
   height: 16px;
-  background-image: url("../../img/ui-icons_454545_256x240.png");
+  background-image: url("../img/ui-icons_454545_256x240.png");
 }
 
 .ui-widget-content .ui-icon {
-  background-image: url("../../img/ui-icons_222222_256x240.png");
+  background-image: url("../img/ui-icons_222222_256x240.png");
 }
 
 .ui-widget-header .ui-icon {
-  background-image: url("../../img/ui-icons_222222_256x240.png");
+  background-image: url("../img/ui-icons_222222_256x240.png");
 }
 
 .ui-state-default .ui-icon {
-  background-image: url("../../img/ui-icons_454545_256x240.png");
+  background-image: url("../img/ui-icons_454545_256x240.png");
 }
 
 .ui-state-hover .ui-icon,
 .ui-state-focus .ui-icon {
-  background-image: url("../../img/ui-icons_222222_256x240.png");
+  background-image: url("../img/ui-icons_222222_256x240.png");
 }
 
 .ui-state-active .ui-icon {
-  background-image: url("../../img/ui-icons_454545_256x240.png");
+  background-image: url("../img/ui-icons_454545_256x240.png");
 }
 
 .ui-state-highlight .ui-icon {
-  background-image: url("../../img/ui-icons_2e83ff_256x240.png");
+  background-image: url("../img/ui-icons_2e83ff_256x240.png");
 }
 
 .ui-state-error .ui-icon,
 .ui-state-error-text .ui-icon {
-  background-image: url("../../img/ui-icons_f6cf3b_256x240.png");
+  background-image: url("../img/ui-icons_f6cf3b_256x240.png");
 }
 
 /* positioning */
@@ -6928,7 +6928,7 @@ select:focus {
 /* Overlays */
 
 .ui-widget-overlay {
-  background: #aaaaaa url("../../img/ui-bg_flat_0_aaaaaa_40x100.png") 50% 50% repeat-x;
+  background: #aaaaaa url("../img/ui-bg_flat_0_aaaaaa_40x100.png") 50% 50% repeat-x;
   opacity: 0.3;
   filter: alpha(opacity=30);
 }
@@ -6936,7 +6936,7 @@ select:focus {
 .ui-widget-shadow {
   padding: 8px;
   margin: -8px 0 0 -8px;
-  background: #999999 url("../../img/ui-bg_flat_0_aaaaaa_40x100.png") 50% 50% repeat-x;
+  background: #999999 url("../img/ui-bg_flat_0_aaaaaa_40x100.png") 50% 50% repeat-x;
   -webkit-border-radius: 8px;
    -khtml-border-radius: 8px;
      -moz-border-radius: 8px;
@@ -7310,7 +7310,7 @@ select:focus {
 }
 
 .ui-button-primary span.ui-icon {
-  background-image: url("../../img/ui-icons_ffffff_256x240.png");
+  background-image: url("../img/ui-icons_ffffff_256x240.png");
 }
 
 .ui-button-success {
@@ -7347,7 +7347,7 @@ select:focus {
 }
 
 .ui-button-success span.ui-icon {
-  background-image: url("../../img/ui-icons_ffffff_256x240.png");
+  background-image: url("../img/ui-icons_ffffff_256x240.png");
 }
 
 .ui-button-error {
@@ -7384,7 +7384,7 @@ select:focus {
 }
 
 .ui-button-error span.ui-icon {
-  background-image: url("../../img/ui-icons_ffffff_256x240.png");
+  background-image: url("../img/ui-icons_ffffff_256x240.png");
 }
 
 .ui-button-danger {
@@ -7421,7 +7421,7 @@ select:focus {
 }
 
 .ui-button-danger span.ui-icon {
-  background-image: url("../../img/ui-icons_ffffff_256x240.png");
+  background-image: url("../img/ui-icons_ffffff_256x240.png");
 }
 
 .ui-button-warning {
@@ -7458,7 +7458,7 @@ select:focus {
 }
 
 .ui-button-warning span.ui-icon {
-  background-image: url("../../img/ui-icons_ffffff_256x240.png");
+  background-image: url("../img/ui-icons_ffffff_256x240.png");
 }
 
 .ui-button-inverse {
@@ -7495,7 +7495,7 @@ select:focus {
 }
 
 .ui-button-inverse span.ui-icon {
-  background-image: url("../../img/ui-icons_ffffff_256x240.png");
+  background-image: url("../img/ui-icons_ffffff_256x240.png");
 }
 
 .ui-button-info {
@@ -7532,7 +7532,7 @@ select:focus {
 }
 
 .ui-button-info span.ui-icon {
-  background-image: url("../../img/ui-icons_ffffff_256x240.png");
+  background-image: url("../img/ui-icons_ffffff_256x240.png");
 }
 
 .ui-button-icon-only {
@@ -7857,7 +7857,7 @@ button.ui-button::-moz-focus-inner {
 }
 
 .ui-dialog-buttonpane .ui-dialog-buttonset .ui-button.ui-state-focus span.ui-icon {
-  background-image: url("../../img/ui-icons_ffffff_256x240.png");
+  background-image: url("../img/ui-icons_ffffff_256x240.png");
 }
 
 .ui-dialog-buttonpane .ui-dialog-buttonset .ui-button.ui-state-focus:hover,
