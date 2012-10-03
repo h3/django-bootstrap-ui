@@ -66,15 +66,6 @@ form .span12 input[type="text"] {
     width: 890px;
 }
 
-.inplaceeditform ul.alert,
-.inplaceedit ul.alert {
-    display: inline-block;
-    margin-top: 0!important;
-    margin-left: 6px!important;
-    margin-bottom: 0!important;
-    list-style: none!important;
-    padding: 4px 35px 5px 14px!important;
-} 
 
 
 /* TO FIX */
@@ -110,60 +101,4 @@ form .span12 input[type="text"] {
 
 .table tbody th {
     vertical-align: middle;
-}
-
-/* Inline edit form fixes */
-
-.inplaceeditform {
-    display: inline-block!important;
-    margin-top: -8px;
-    margin-bottom: 0;
-}
-
-.inplaceedit {
-    background: #eee;
-    border: 1px solid #E5E5E5;
-    border-radius: 3px 3px 3px 3px;
-    color: #555;
-    display: inline-block;
-    font-size: 13px;
-    height: 18px;
-    line-height: 18px;
-    padding: 4px;
-}
-
-.edit_over {
-    background: #def;
-}
-
-.inplaceedit i {
-    margin-left: 8px;
-    display: none;
-}
-
-.inplaceedit:hover i {
-    margin-left: 8px;
-    display: inline-block;
-}
-
-
-h1 .inplaceedit {
-    font-size: 1.2em;
-    display: inline;
-    background: transparent;
-    border: 0;
-    padding: 0px 10px;
-}
-h1 .inplaceedit:hover {
-    background-color: #def;
-}
-h1 .inplaceedit i {
-    margin-left: 10px;
-}
-
-h1 .inplaceediti i,
-h1 .inplaceedit.edit_over i {
-    margin-left: 10px;
-    position: relative;
-    top: 16px;
 }
