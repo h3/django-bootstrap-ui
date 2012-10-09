@@ -49,23 +49,6 @@ fieldset .controls .checkbox {
     margin-top: 22px;
 }
 
-/* Forms adjustments */
-
-form .span8 select,
-form .span8 input[type="text"] {
-    width: 610px;
-}
-
-form .span9 select,
-form .span9 input[type="text"] {
-    width: 650px;
-}
-
-form .span12 select,
-form .span12 input[type="text"] {
-    width: 890px;
-}
-
 
 
 /* TO FIX */
@@ -82,21 +65,6 @@ form .span12 input[type="text"] {
     font-size: 11px;
     line-height: 16px;
     padding: 2px 6px;
-}
-
-.span3 input[type="password"],
-.span3 input[type="text"] {
-    width: 170px;
-}
-
-.span4 input[type="password"],
-.span4 input[type="text"] {
-    width: 248px;
-}
-
-.span6 input[type="password"],
-.span6 input[type="text"] {
-    width: 410px;
 }
 
 .table tbody th {
