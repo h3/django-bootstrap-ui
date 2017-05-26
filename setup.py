@@ -14,4 +14,6 @@ setup(
     packages = find_packages(),
     package_dir = {'': '.'},
     install_requires = [],
+    include_package_data=True,
+
 )
