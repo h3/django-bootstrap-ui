@@ -2,7 +2,13 @@
 Django-bootstrap-ui
 """
 
-from setuptools import setup, find_packages
+from distutils.core import setup
+
+try:
+    import setuptools
+except ImportError:
+    pass
+
 
 setup(
     name = "django-bootstrap-ui",
@@ -11,8 +17,7 @@ setup(
     license = "",
     description = "",
     author = 'Maxime Haineault',
-    packages = find_packages(),
-    package_dir = {'': '.'},
+    packages = ['bootstrap_ui'],
     install_requires = [],
     include_package_data=True,
 
